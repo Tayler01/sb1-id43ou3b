@@ -1,0 +1,23 @@
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+[build.environment]
+  VITE_SUPABASE_URL = "https://gsuvcbcjtpzdjyselpss.supabase.co"
+  VITE_SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImdzdXZjYmNqdHB6ZGp5c2VscHNzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDgzNDA5MzgsImV4cCI6MjA2MzkxNjkzOH0.p0SE2wHM9xCV-nmlVK4x1Vu9e_zNF8Z4tOScrmb8q6g"
+
+[build.processing]
+  skip_processing = false
+[build.processing.css]
+  bundle = true
+  minify = true
+[build.processing.js]
+  bundle = true
+  minify = true
+[build.processing.images]
+  compress = true

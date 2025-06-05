@@ -1,0 +1,272 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: 0 0% 100%;
+  --foreground: 0 0% 3.9%;
+  --card: 0 0% 100%;
+  --card-foreground: 0 0% 3.9%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 0 0% 3.9%;
+  --primary: 0 0% 9%;
+  --primary-foreground: 0 0% 98%;
+  --secondary: 0 0% 96.1%;
+  --secondary-foreground: 0 0% 9%;
+  --muted: 0 0% 96.1%;
+  --muted-foreground: 0 0% 45.1%;
+  --accent: 0 0% 96.1%;
+  --accent-foreground: 0 0% 9%;
+  --destructive: 0 84.2% 60.2%;
+  --destructive-foreground: 0 0% 98%;
+  --border: 0 0% 89.8%;
+  --input: 0 0% 89.8%;
+  --ring: 0 0% 3.9%;
+  --radius: 0.5rem;
+}
+
+.dark {
+  --background: 0 0% 3.9%;
+  --foreground: 0 0% 98%;
+  --card: 0 0% 3.9%;
+  --card-foreground: 0 0% 98%;
+  --popover: 0 0% 3.9%;
+  --popover-foreground: 0 0% 98%;
+  --primary: 0 0% 98%;
+  --primary-foreground: 0 0% 9%;
+  --secondary: 0 0% 14.9%;
+  --secondary-foreground: 0 0% 98%;
+  --muted: 0 0% 14.9%;
+  --muted-foreground: 0 0% 63.9%;
+  --accent: 0 0% 14.9%;
+  --accent-foreground: 0 0% 98%;
+  --destructive: 0 62.8% 30.6%;
+  --destructive-foreground: 0 0% 98%;
+  --border: 0 0% 14.9%;
+  --input: 0 0% 14.9%;
+  --ring: 0 0% 83.1%;
+}
+
+* {
+  @apply border-border;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  min-width: 100vw;
+  background-color: rgb(17, 17, 17);
+  color: white;
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* Enhanced grid background with more dynamic animation */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: 
+    linear-gradient(to bottom, rgba(17, 17, 17, 0.85), rgba(17, 17, 17, 0.9)),
+    repeating-linear-gradient(
+      45deg,
+      transparent 0px,
+      transparent 2px,
+      rgba(255, 255, 255, 0.07) 3px,
+      transparent 4px
+    ),
+    repeating-linear-gradient(
+      -45deg,
+      transparent 0px,
+      transparent 2px,
+      rgba(255, 255, 255, 0.07) 3px,
+      transparent 4px
+    );
+  background-size: 100% 100%, 20px 20px, 20px 20px;
+  animation: grid-animation 15s linear infinite;
+  pointer-events: none;
+  z-index: 0;
+}
+
+@keyframes grid-animation {
+  0% {
+    background-position: 0 0, 0 0, 0 0;
+    opacity: 0.8;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    background-position: 0 0, -20px -20px, 20px 20px;
+    opacity: 0.8;
+  }
+}
+
+/* Enhanced circuit board effect */
+.circuit-lines {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: 
+    radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.08) 0%, transparent 70%),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+  background-size: 100% 100%, 20px 20px, 20px 20px;
+  animation: circuit-pulse 4s ease-in-out infinite;
+  pointer-events: none;
+  z-index: 0;
+}
+
+@keyframes circuit-pulse {
+  0%, 100% {
+    opacity: 0.5;
+    filter: blur(2px) brightness(0.9);
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.8;
+    filter: blur(1px) brightness(1.3);
+    transform: scale(1.05);
+  }
+}
+
+#root {
+  min-height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  z-index: 1;
+}
+
+/* Enhanced lightning effect */
+@keyframes lightning {
+  0% {
+    box-shadow: none;
+    opacity: 0.3;
+  }
+  20% {
+    box-shadow: 
+      0 0 30px rgba(255, 255, 255, 0.4),
+      0 0 60px rgba(255, 255, 255, 0.2);
+    opacity: 0.8;
+  }
+  40% {
+    box-shadow: none;
+    opacity: 0.3;
+  }
+  60% {
+    box-shadow: 
+      0 0 40px rgba(255, 255, 255, 0.4),
+      0 0 80px rgba(255, 255, 255, 0.2);
+    opacity: 0.9;
+  }
+  80% {
+    box-shadow: none;
+    opacity: 0.3;
+  }
+  100% {
+    box-shadow: 
+      0 0 50px rgba(255, 255, 255, 0.4),
+      0 0 100px rgba(255, 255, 255, 0.2);
+    opacity: 1;
+  }
+}
+
+.lightning-effect {
+  animation: lightning 3s infinite;
+}
+
+/* Enhanced progress bar with time-based colors */
+.progress-liquid-enhanced {
+  position: relative;
+  overflow: hidden;
+  background: rgba(30, 30, 30, 0.5);
+  box-shadow: 
+    0 0 20px rgba(255, 255, 255, 0.1),
+    0 0 40px rgba(255, 255, 255, 0.05),
+    inset 0 0 15px rgba(0, 0, 0, 0.3);
+}
+
+.progress-liquid-enhanced::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.3),
+    transparent
+  );
+  animation: shimmer 2s linear infinite;
+}
+
+.progress-liquid-enhanced > div {
+  position: relative;
+  height: 100%;
+  background-size: 200% 100%;
+  animation: gradient-shift 3s linear infinite;
+  box-shadow:
+    0 0 20px var(--progress-glow-color, rgba(34, 197, 94, 0.5)),
+    0 0 40px var(--progress-glow-color, rgba(34, 197, 94, 0.3));
+  transition: all 0.3s ease;
+}
+
+@keyframes gradient-shift {
+  0% {
+    background-position: 100% 0;
+  }
+  100% {
+    background-position: -100% 0;
+  }
+}
+
+/* Enhanced shimmer effect */
+@keyframes shimmer {
+  0% {
+    background-position: -200% center;
+    opacity: 0.5;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    background-position: 200% center;
+    opacity: 0.5;
+  }
+}
+
+.timer-shimmer {
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.1) 0%,
+    rgba(255, 255, 255, 0.3) 50%,
+    rgba(255, 255, 255, 0.1) 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 3s linear infinite;
+}
+
+/* Time-based color classes */
+.timer-early {
+  --timer-color: rgb(34, 197, 94);
+  --timer-glow: rgba(34, 197, 94, 0.5);
+}
+
+.timer-mid {
+  --timer-color: rgb(234, 179, 8);
+  --timer-glow: rgba(234, 179, 8, 0.5);
+}
+
+.timer-late {
+  --timer-color: rgb(239, 68, 68);
+  --timer-glow: rgba(239, 68, 68, 0.5);
+}
